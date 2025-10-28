@@ -1,13 +1,20 @@
-FROM python:3.9
+# Use lightweight Python image
+FROM python:3.10-slim
 
+# Set working directory
 WORKDIR /app
 
-COPY . /app
+# Copy requirements first
+COPY requirements.txt .
 
-RUN pip install --no-cache-dir -e .
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy your source code
+COPY . .
+
+# Expose port (for Flask)
 EXPOSE 5000
 
-ENV FLASK_APP=application.py
-
-CMD ["python" , "application.py"]
+# Run app
+CMD ["python", "application.py"]
