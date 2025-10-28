@@ -1,0 +1,198 @@
+/* ====== Global Page Setup ====== */
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #00bcd4, #009688, #80deea);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ====== Animated Gradient Background ====== */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ====== Floating Glowing Particles ====== */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    width: 250%;
+    height: 250%;
+    top: -75%;
+    left: -75%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 2px, transparent 3px);
+    background-size: 60px 60px;
+    animation: moveParticles 40s linear infinite;
+    z-index: 0;
+}
+
+body::after {
+    animation-direction: reverse;
+    opacity: 0.6;
+}
+
+@keyframes moveParticles {
+    from { transform: translate(0, 0) rotate(0deg); }
+    to { transform: translate(50px, 50px) rotate(360deg); }
+}
+
+/* ====== Glassmorphism Container ====== */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 50px 60px;
+    border-radius: 25px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+    width: 400px;
+    text-align: center;
+    animation: fadeInUp 1.2s ease-out;
+    z-index: 1;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Title ====== */
+h2 {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0,255,255,0.6);
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #00e5ff, #1de9b6);
+    margin: 10px auto 0;
+    border-radius: 2px;
+    animation: expandLine 1.3s ease-out;
+}
+
+@keyframes expandLine {
+    from { width: 0; opacity: 0; }
+    to { width: 60px; opacity: 1; }
+}
+
+/* ====== Form Fields ====== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+label {
+    text-align: left;
+    color: #e0f7fa;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+label:hover {
+    color: #1de9b6;
+}
+
+input[type="number"] {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.15);
+}
+
+input[type="number"]:focus {
+    border-color: #1de9b6;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    outline: none;
+}
+
+/* ====== Neon Animated Button ====== */
+button {
+    margin-top: 15px;
+    background: linear-gradient(45deg, #00e5ff, #1de9b6);
+    color: #00332e;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(-20deg);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ====== Prediction Output Box ====== */
+h3 {
+    margin-top: 30px;
+    color: #e0f2f1;
+    font-weight: 600;
+    background: rgba(0, 77, 64, 0.6);
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    animation: fadeInResult 0.8s ease-out;
+}
+
+@keyframes fadeInResult {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Responsive Design ====== */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 35px 25px;
+    }
+    h2 { font-size: 1.4rem; }
+}
+
